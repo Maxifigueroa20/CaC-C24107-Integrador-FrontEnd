@@ -21,7 +21,7 @@ h2 {
     min-height: 15vh;
 }
 
-.hero, .login-container, .register-container, .api-container, .admin-container {
+.hero, .login-container, .register-container, .api-container {
     min-height: 85vh;
 }
 
