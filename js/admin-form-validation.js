@@ -10,7 +10,7 @@ adminForm.addEventListener('submit', (event) => {
     const desarrollador = document.getElementById('desarrollador').value.trim();
     const descripcion = document.getElementById('descripcion').value.trim();
     const genero = document.getElementById('genero').value.trim();
-    const imagen = document.getElementById('imagen').files.length;
+    const imagen = document.getElementById('imagen');
     const plataforma = document.getElementById('plataforma').value;
 
     // Variable logica para controlar si el formulario es valido o no
@@ -53,7 +53,7 @@ adminForm.addEventListener('submit', (event) => {
     }
 
     // Valida que se haya seleccionado almenos una imagen
-    if (imagen === 0) {
+    if (imagen.files.length === 0) {
         document.getElementById('imagen').classList.add('is-invalid');
         esValido = false;
     } else {
@@ -70,10 +70,12 @@ adminForm.addEventListener('submit', (event) => {
         document.getElementById('plataforma').classList.add('is-valid');
     }
 
-    // Si el formulario es valido, el submit es manejeado por otro archivo que hace el POST a la api
+    // Si el formulario es valido, su envio es manejeado por otro archivo que hace el POST a la api
     if (esValido) {
-        adminForm.submit();
-        alert('Formulario enviado correctamente');
+        const formData = new FormData(event.target);
+        // Me quedo solo con el nombre de la imagen
+        formData.set('imagen', imagen.files[0].name);
+        postJuegos(formData, adminForm);
     } else {
         alert('Por favor verifique los datos ingresados');
     }

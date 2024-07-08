@@ -29,7 +29,9 @@ async function updateTable() {
                 <th>${juego.id}</th>
                 <td>${juego.nombre}</td>
                 <td>${juego.desarrollador}</td>
-                <td>${juego.descripcion}</td>
+                <td>
+                    <div class="descripcion-listado"><p>${juego.descripcion}</p></div>
+                </td>
                 <td>${juego.genero}</td>
                 <td>${juego.plataforma}</td>
                 <td><img src="../assets/img/${juego.imagen}" class="rounded-3" width="200px" height="300px" alt="juego-del-listado"></td>
